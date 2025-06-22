@@ -1,0 +1,8 @@
+MODEL_REPO=tensorblock/starcoder2-3b-GGUF
+MODEL_FILE=starcoder2-3b-Q4_K_M.gguf
+MODEL_DISPLAY=StarCoder2‑3B
+MODEL_PROVIDER=openai
+MODEL_NAME=starcoder2
+MODEL_API_BASE=http://localhost:8000/v1
+CODE_TEMPERATURE=0.2
+CODE_MAX_TOKENS=512

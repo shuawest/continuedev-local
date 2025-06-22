@@ -4,7 +4,7 @@ This README provides instructions for setting up and using multiple local LLM mo
 
 Setup
 	1.	Install Dependencies: Ensure you have a compatible LLM runner. We recommend using llama.cpp or a UI like text-generation-webui, which support the GGUF quantized models listed here. You will need a recent version of llama.cpp (August 27, 2023 or later) to use GGUF v2 models ￼ ￼. If using Python, install the latest transformers library (>=4.34) and optionally ctransformers or llama-cpp-python for GGUF support ￼ ￼.
-	2.	Hardware Requirements: These models range from 1.1B to 34B parameters. Smaller models (1B–7B) can run on CPU or modest GPUs, while the 34B model may require >15 GB VRAM (or use 8-bit/4-bit quantization on CPU with ~8–10 GB RAM). See model notes for RAM/VRAM needs. For example, CodeLlama-7B-Instruct in 4-bit uses ~6.5 GB RAM ￼ ￼.
+	2.	Hardware Requirements: These models range from 1.1B to 34B parameters. Smaller models (1B–7B) can run on CPU or modest GPUs, while the 34B model may require >15 GB VRAM (or use 8-bit/4-bit quantization on CPU with ~8–10 GB RAM). See model notes for RAM/VRAM needs. For example, CodeLlama-7B-Instruct in 4-bit uses ~6.5 GB RAM.
 	3.	Download Models: Use the huggingface-hub CLI or web UI to download the model files. It’s not necessary to clone entire repos; you can download just the desired quantized file. For example, to get a 4-bit quantized CodeLlama-7B-Instruct model:
 
 pip install huggingface-hub>=0.17.1

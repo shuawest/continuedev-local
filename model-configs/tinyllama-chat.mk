@@ -1,0 +1,8 @@
+MODEL_REPO=TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF
+MODEL_FILE=tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
+MODEL_DISPLAY=TinyLlama
+MODEL_PROVIDER=openai
+MODEL_NAME=tinyllama-chat
+MODEL_API_BASE=http://localhost:8000/v1
+CHAT_TEMPERATURE=0.7
+CHAT_MAX_TOKENS=512

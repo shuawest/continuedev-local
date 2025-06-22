@@ -1,0 +1,8 @@
+MODEL_REPO=TheBloke/OpenHermes-2.5-Mistral-7B-GGUF
+MODEL_FILE=openhermes-2.5-mistral-7b.Q4_K_M.gguf
+MODEL_DISPLAY=OpenHermes
+MODEL_PROVIDER=openai
+MODEL_NAME=openhermes-chat
+MODEL_API_BASE=http://localhost:8000/v1
+CHAT_TEMPERATURE=0.6
+CHAT_MAX_TOKENS=2048
