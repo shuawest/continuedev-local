@@ -1,0 +1,40 @@
+name: $MODEL_DISPLAY
+version: 0.0.1
+schema: v1
+
+models:
+  - name: "$MODEL_DISPLAY Chat"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - chat
+      - edit
+    defaultCompletionOptions:
+      temperature: $CHAT_TEMPERATURE
+      maxTokens: $CHAT_MAX_TOKENS
+    rules:
+      - "Respond clearly and precisely in English only."
+      - "Do not use other languages or code examples with non-English annotations."
+      - "Keep the tone professional and concise."
+
+  - name: "$MODEL_DISPLAY Code"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - autocomplete
+    defaultCompletionOptions:
+      temperature: $CODE_TEMPERATURE
+      maxTokens: $CODE_MAX_TOKENS
+      stop:
+        - "\"\"\""
+        - "\n\n"
+        - "\n#"
+        - "\ndef "
+        - "\nclass "
+    rules:
+      - "Generate valid code for professional developers."
+      - "Never include foreign language comments or mixed-language examples."

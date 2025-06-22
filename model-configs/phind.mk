@@ -1,0 +1,11 @@
+# model-configs/phind.mk
+export MODEL_REPO=TheBloke/Phind-CodeLlama-34B-v2-GGUF
+export MODEL_FILE=phind-codellama-34b-v2.Q4_K_M.gguf
+export MODEL_DISPLAY=PhindCodeLlama
+export MODEL_PROVIDER=openai
+export MODEL_NAME=phind-chat
+export MODEL_API_BASE=http://localhost:8000/v1
+export CHAT_TEMPERATURE=0.5
+export CHAT_MAX_TOKENS=2048
+export CODE_TEMPERATURE=0.2
+export CODE_MAX_TOKENS=512

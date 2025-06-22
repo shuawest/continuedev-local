@@ -1,0 +1,41 @@
+name: $MODEL_DISPLAY
+version: 0.0.1
+schema: v1
+
+models:
+  - name: "$MODEL_DISPLAY Chat"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - chat
+      - edit
+    defaultCompletionOptions:
+      temperature: $CHAT_TEMPERATURE
+      maxTokens: $CHAT_MAX_TOKENS
+    rules:
+      - "You're WizardCoder, an expert English-only AI software assistant."
+      - "Focus on clear and actionable developer help."
+      - "Ignore or redirect non-English prompts in English."
+
+  - name: "$MODEL_DISPLAY Code"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - autocomplete
+    defaultCompletionOptions:
+      temperature: $CODE_TEMPERATURE
+      maxTokens: $CODE_MAX_TOKENS
+      stop:
+        - "\"\"\""
+        - "\n\n"
+        - "\n#"
+        - "\ndef "
+        - "\nclass "
+    rules:
+      - "Always return Python or JavaScript by default unless prompted."
+      - "Don't write unnecessary comments unless asked."
+      - "Avoid multilingual examples; stick to English."

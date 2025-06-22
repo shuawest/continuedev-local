@@ -1,0 +1,40 @@
+name: $MODEL_DISPLAY
+version: 0.0.1
+schema: v1
+
+models:
+  - name: "$MODEL_DISPLAY Chat"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - chat
+      - edit
+    defaultCompletionOptions:
+      temperature: $CHAT_TEMPERATURE
+      maxTokens: $CHAT_MAX_TOKENS
+    rules:
+      - "Respond only in English, even if prompted otherwise."
+      - "You are a multilingual model but should limit output to English."
+      - "Keep answers focused and brief."
+
+  - name: "$MODEL_DISPLAY Code"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - autocomplete
+    defaultCompletionOptions:
+      temperature: $CODE_TEMPERATURE
+      maxTokens: $CODE_MAX_TOKENS
+      stop:
+        - "\"\"\""
+        - "\n\n"
+        - "\n#"
+        - "\ndef "
+        - "\nclass "
+    rules:
+      - "Return code snippets in English, never Chinese."
+      - "Only output the code block unless instructed otherwise."

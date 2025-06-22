@@ -1,0 +1,11 @@
+# model-configs/zephyr.mk
+export MODEL_REPO=TheBloke/zephyr-7B-alpha-GGUF
+export MODEL_FILE=zephyr-7b-alpha.Q4_K_M.gguf
+export MODEL_DISPLAY=Zephyr
+export MODEL_PROVIDER=openai
+export MODEL_NAME=zephyr-chat
+export MODEL_API_BASE=http://localhost:8000/v1
+export CHAT_TEMPERATURE=0.65
+export CHAT_MAX_TOKENS=2048
+export CODE_TEMPERATURE=0.25
+export CODE_MAX_TOKENS=512

@@ -1,0 +1,11 @@
+# model-configs/tinyllama.mk
+export MODEL_REPO=TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF
+export MODEL_FILE=tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
+export MODEL_DISPLAY=TinyLlama
+export MODEL_PROVIDER=openai
+export MODEL_NAME=tinyllama-chat
+export MODEL_API_BASE=http://localhost:8000/v1
+export CHAT_TEMPERATURE=0.7
+export CHAT_MAX_TOKENS=512
+export CODE_TEMPERATURE=0.2
+export CODE_MAX_TOKENS=256
