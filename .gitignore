@@ -3,10 +3,9 @@
 # ignore scratch testing
 podman
 
-# don't commit what make pulls and builds
+# Makefile created managed directories
 llama.cpp
 models
 logs
 .venv
-
 
