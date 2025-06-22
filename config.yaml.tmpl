@@ -1,0 +1,44 @@
+name: $MODEL_DISPLAY
+version: 0.0.1
+schema: v1
+
+models:
+  - name: "$MODEL_DISPLAY Chat"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - chat
+      - edit
+    defaultCompletionOptions:
+      temperature: $CHAT_TEMPERATURE
+      maxTokens: $CHAT_MAX_TOKENS
+    rules:
+      - "You are a helpful, concise AI assistant that communicates only in English."
+      - "Never use Chinese or other languages."
+      - "Keep all answers clean, professional, and focused." 
+      - "If the user asks in another language, respond in English."
+
+  - name: "$MODEL_DISPLAY Code"
+    provider: $MODEL_PROVIDER
+    model: $MODEL_NAME
+    apiBase: $MODEL_API_BASE
+    apiKey: ""
+    roles:
+      - autocomplete
+    defaultCompletionOptions:
+      temperature: $CODE_TEMPERATURE
+      maxTokens: $CODE_MAX_TOKENS
+      stop:
+        - "\"\"\""
+        - "\n\n"
+        - "\n#"
+        - "\ndef "
+        - "\nclass "
+    rules:
+      - "Only generate valid code."
+      - "You are a software development assistant that only writes correct, idiomatic, well-commented code in English."
+      - "Avoid any non-English output."
+      - "Never outout chinese characters."
+      - "You never respond with anything but valid code unless explicitly asked."

@@ -1,0 +1,12 @@
+
+    path = 'github.com/McShelby/hugo-theme-relearn'
+# ignore scratch testing
+podman
+
+# don't commit what make pulls and builds
+llama.cpp
+models
+logs
+.venv
+
+
