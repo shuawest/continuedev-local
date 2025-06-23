@@ -99,7 +99,7 @@ download-all-models: ## Download all GGUF models from model-configs/
 	done
 	@echo "✅ All models processed."
 
-run-dual: ## Launch both chat and code models
+start: ## Launch both chat and code models
 	@echo "🚀 Launching chat model on port $(CHAT_MODEL_PORT)..."
 	@mkdir -p $(LOG_DIR)
 	@echo "nohup $(SERVER_BIN) -m models/$(CHAT_MODEL_FILE) --port $(CHAT_MODEL_PORT) --ctx-size $(CHAT_CTX_SIZE) > $(LOG_DIR)/chat.log 2>&1 &"
@@ -111,14 +111,18 @@ run-dual: ## Launch both chat and code models
 	@sleep 2
 	@echo "✅ Both models launched."
 
-stop-dual: ## Stop all running model servers
+stop: ## Stop all running model servers
 	@pkill -f "models/$(CHAT_MODEL_FILE)" || true
+	@kill -9 $(lsof -ti :8001) || true
 	@pkill -f "models/$(CODE_MODEL_FILE)" || true
+	@kill -9 $(lsof -ti :8002) || true
 	@echo "🛑 Servers stopped."
 
 status: ## Check model server status
 	@pgrep -f "models/$(CHAT_MODEL_FILE)" > /dev/null && echo "🟢 Chat model running on port $(CHAT_MODEL_PORT)" || echo "🔴 Chat model not running"
+	@lsof -i :8001 || true
 	@pgrep -f "models/$(CODE_MODEL_FILE)" > /dev/null && echo "🟢 Code model running on port $(CODE_MODEL_PORT)" || echo "🔴 Code model not running"
+	@lsof -i :8002 || true
 
 log: ## Tail logs
 	@tail -f $(LOG_DIR)/chat.log $(LOG_DIR)/code.log

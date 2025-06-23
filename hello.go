@@ -10,5 +10,6 @@ func main() {
 	// write hello world!
 	fmt.Println("hello world!")
 	// write goodbye cruel world!
-	fmt.Println("goodbye cruel world!")
+	fmt.Print("goodbye cruel world!")
+
 }
