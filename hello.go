@@ -9,7 +9,8 @@ import (
 func main() {
 	// write hello world!
 	fmt.Print("hello world!")
-	// write goobye world!
-	fmt.Println()
+	// write goodbye world!
+	fmt.Println("goodbye world!")
+	// write the end
 
 }
