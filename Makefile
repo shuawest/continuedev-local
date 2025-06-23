@@ -42,6 +42,7 @@ VENV_DIR := .venv
 CONFIG_TEMPLATE := config.yaml.tmpl
 CONFIG_OUTPUT := $(HOME)/.continue/config.yaml
 SERVER_BIN := $(CURDIR)/llama.cpp/build/bin/llama-server
+CODE_SERVER_BIN := python3 -m llama_cpp.server
 LOG_DIR := logs
 
 .DEFAULT_GOAL := help
@@ -61,6 +62,11 @@ help:
 	@echo "🛠️  Commands:"
 	@grep -hE '^[a-zA-Z0-9_-]+:.*## ' $(firstword $(MAKEFILE_LIST)) | \
 	sed -E 's/^([a-zA-Z0-9_-]+):.*## (.*)/    \1\t\2/' | expand -t20
+
+setup: ## One-time environment setup including Python server
+	@echo "🐍 Creating virtual environment and installing dependencies..."
+	@test -d $(VENV_DIR) || python3 -m venv $(VENV_DIR)
+	@. $(VENV_DIR)/bin/activate && pip install --upgrade pip && pip install llama-cpp-python[server] huggingface_hub
 
 build-llama: ## Clone and build llama.cpp
 	@git clone https://github.com/ggerganov/llama.cpp.git || true
@@ -99,7 +105,7 @@ run-dual: ## Launch both chat and code models
 	@nohup $(SERVER_BIN) -m models/$(CHAT_MODEL_FILE) --port $(CHAT_MODEL_PORT) --ctx-size $(CHAT_CTX_SIZE) > $(LOG_DIR)/chat.log 2>&1 &
 	@sleep 2
 	@echo "🚀 Launching code model on port $(CODE_MODEL_PORT)..."
-	@nohup $(SERVER_BIN) -m models/$(CODE_MODEL_FILE) --port $(CODE_MODEL_PORT) --ctx-size $(CODE_CTX_SIZE) > $(LOG_DIR)/code.log 2>&1 &
+	@nohup $(CODE_SERVER_BIN) --model models/$(CODE_MODEL_FILE) --port $(CODE_MODEL_PORT) --n_ctx $(CODE_CTX_SIZE) > $(LOG_DIR)/code.log 2>&1 &
 	@sleep 2
 	@echo "✅ Both models launched."
 

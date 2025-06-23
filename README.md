@@ -1,4 +1,4 @@
-Multi-Model Local LLM Setup
+# Multi-Model Local LLM Setup
 
 This README provides instructions for setting up and using multiple local LLM models, along with a catalog of the available models and their details. We include guidance on installation, model usage, the model catalog (with summaries, pros, and cons of each model), and a command reference for common operations.
 
