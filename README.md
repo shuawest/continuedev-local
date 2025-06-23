@@ -108,7 +108,9 @@ continuedev-local/
 - Log files are written to `logs/chat.log` and `logs/code.log`.
 - Use `make continue-config` anytime you change models.
 - For best performance, use 4-bit GGUF models and install Metal support in `llama.cpp`.
-
+- Smoke test the code completion service with: `curl -s http://localhost:8002/v1/completions \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "func main() {\n\tfmt.Pr", "max_tokens": 20}'`
 ---
 
 ## 🔐 Hugging Face Auth

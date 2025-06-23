@@ -43,3 +43,11 @@ models:
       - "Avoid any non-English output."
       - "Never output Chinese characters."
       - "You never respond with anything but valid code unless explicitly asked."
+
+context:
+  - provider: codebase
+    params:
+      nRetrieve: 25 # Number of initial results to retrieve
+      nFinal: 5     # Final number of results after re-ranking
+      useReranking: true # Enable re-ranking by an LLM
+

@@ -102,9 +102,11 @@ download-all-models: ## Download all GGUF models from model-configs/
 run-dual: ## Launch both chat and code models
 	@echo "🚀 Launching chat model on port $(CHAT_MODEL_PORT)..."
 	@mkdir -p $(LOG_DIR)
+	@echo "nohup $(SERVER_BIN) -m models/$(CHAT_MODEL_FILE) --port $(CHAT_MODEL_PORT) --ctx-size $(CHAT_CTX_SIZE) > $(LOG_DIR)/chat.log 2>&1 &"
 	@nohup $(SERVER_BIN) -m models/$(CHAT_MODEL_FILE) --port $(CHAT_MODEL_PORT) --ctx-size $(CHAT_CTX_SIZE) > $(LOG_DIR)/chat.log 2>&1 &
 	@sleep 2
 	@echo "🚀 Launching code model on port $(CODE_MODEL_PORT)..."
+	@echo "nohup $(CODE_SERVER_BIN) --model models/$(CODE_MODEL_FILE) --port $(CODE_MODEL_PORT) --n_ctx $(CODE_CTX_SIZE) > $(LOG_DIR)/code.log 2>&1 &"
 	@nohup $(CODE_SERVER_BIN) --model models/$(CODE_MODEL_FILE) --port $(CODE_MODEL_PORT) --n_ctx $(CODE_CTX_SIZE) > $(LOG_DIR)/code.log 2>&1 &
 	@sleep 2
 	@echo "✅ Both models launched."
